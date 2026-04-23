@@ -17,32 +17,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f5f5f5;
+            background-color: #F5EBE8;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(128, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(128, 0, 0, 0.02) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(128, 0, 0, 0.015) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(128, 0, 0, 0.015) 25%, transparent 25%);
+            background-size: auto, auto, 50px 50px, 50px 50px;
+            background-position: 0 0, 0 0, 0 0, 25px 25px;
             overflow: hidden;
-        }
-
-        #video-container, #image-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #video-container.hidden {
-            display: none;
-        }
-
-        #image-container.hidden {
-            display: none;
-        }
-
-        video {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
         }
 
         img {
@@ -55,26 +38,6 @@
     </style>
 </head>
 <body>
-    <div id="video-container">
-        <video autoplay playsinline muted title="GroteMensenDingenTM">
-            <source src="video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div id="image-container" class="hidden">
-        <img src="goodwishes.png" alt="GroteMensenDingenTM">
-    </div>
-
-    <script>
-        const videoContainer = document.getElementById('video-container');
-        const imageContainer = document.getElementById('image-container');
-        const video = document.querySelector('video');
-
-        video.addEventListener('ended', function() {
-            videoContainer.classList.add('hidden');
-            imageContainer.classList.remove('hidden');
-        });
-    </script>
+    <img src="goodwishes.png" alt="GroteMensenDingenTM">
 </body>
 </html>
