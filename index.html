@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GroteMensenDingenTM</title>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8BPS60NRQ3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8BPS60NRQ3');
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -11,12 +21,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #F5EBE8;
             background-image:
                 radial-gradient(circle at 20% 50%, rgba(128, 0, 0, 0.03) 0%, transparent 50%),
@@ -25,19 +34,257 @@
                 linear-gradient(-45deg, rgba(128, 0, 0, 0.015) 25%, transparent 25%);
             background-size: auto, auto, 50px 50px, 50px 50px;
             background-position: 0 0, 0 0, 0 0, 25px 25px;
-            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        img {
+        /* Greeting Card Section */
+        .greeting-section {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .greeting-section img {
             max-width: 100%;
             max-height: 100%;
             width: auto;
             height: auto;
             object-fit: contain;
         }
+
+        /* Music Section */
+        .music-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .music-container {
+            max-width: 600px;
+            width: 100%;
+            background: #F5EBE8;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .music-container h2 {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            background: #000;
+            margin-bottom: 40px;
+        }
+
+        .lyrics-container {
+            text-align: left;
+            background: rgba(245, 235, 232, 0.8);
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 4px solid #800000;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .lyrics-title {
+            text-align: center;
+            font-size: 22px;
+            color: #800000;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .lyrics-section {
+            margin-bottom: 25px;
+        }
+
+        .lyrics-label {
+            color: #800000;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .lyrics-text {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .lyrics-signature {
+            text-align: right;
+            margin-top: 35px;
+            font-style: italic;
+            color: #800000;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+
+        /* Listen Button on Greeting */
+        .listen-button {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: #800000;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
+        }
+
+        .listen-button:hover {
+            background: #600000;
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 6px 16px rgba(128, 0, 0, 0.4);
+        }
+
+        .listen-button:active {
+            transform: translateX(-50%) scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .listen-button {
+                top: 20px;
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .music-container {
+                padding: 30px;
+            }
+
+            .music-container h2 {
+                font-size: 20px;
+            }
+
+            .play-button {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
-    <img src="goodwishes.png" alt="GroteMensenDingenTM">
+    <!-- Greeting Card -->
+    <section class="greeting-section">
+        <button class="listen-button" onclick="playMusic()" title="Luister mee">
+            ♫ Luister mee ♫
+        </button>
+        <img src="goodwishes.png" alt="GroteMensenDingenTM">
+    </section>
+
+    <!-- Music Section -->
+    <section class="music-section">
+        <div class="music-container">
+            <h2>♫ Luister mee ♫</h2>
+            <video id="music-video" controls>
+                <source src="music.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="lyrics-container">
+                <div class="lyrics-title">♫ De AllerMooiste Helft ♫</div>
+
+                <div class="lyrics-section">
+                    <div class="lyrics-label">Verse 1</div>
+                    <div class="lyrics-text">
+                        Het begon als een pull request, lang geleden in de tijd<br>
+                        Twee verschillende branches, op zoek naar verbondenheid<br>
+                        De commits waren helder, de richting stond vast<br>
+                        Steph en Jim, een merge die precies bij elkaar past
+                    </div>
+                </div>
+
+                <div class="lyrics-section">
+                    <div class="lyrics-label">Chorus</div>
+                    <div class="lyrics-text">
+                        Vandaag vieren we de merge naar de master-branch van het leven<br>
+                        Aan elkaar de belofte om alles te gaan geven<br>
+                        Van de Paradijskerk tot de diepte van de blauwe zee<br>
+                        Varen jullie samen op de golven van het geluk mee
+                    </div>
+                </div>
+
+                <div class="lyrics-section">
+                    <div class="lyrics-label">Verse 2</div>
+                    <div class="lyrics-text">
+                        Jullie zijn echte hoogvliegers, dat was altijd al bekend<br>
+                        Maar wat gaaf dat jullie nu de diepte opzoeken, als een duo dat elkaar echt kent<br>
+                        Hand in hand onder water, tussen het koraal en de vissen<br>
+                        Een liefde zo diep, die kan niemand meer missen
+                    </div>
+                </div>
+
+                <div class="lyrics-section">
+                    <div class="lyrics-label">Bridge</div>
+                    <div class="lyrics-text">
+                        Op vierentwintig april, in Rotterdam en Delft<br>
+                        Vindt de een in de ander de allermooiste helft<br>
+                        Grote mensen dingen, een officieel begin<br>
+                        Met een koffer vol tickets duiken jullie het avontuur in
+                    </div>
+                </div>
+
+                <div class="lyrics-section">
+                    <div class="lyrics-label">Outro</div>
+                    <div class="lyrics-text">
+                        Maak er een geweldige reis van, vol liefde en pracht<br>
+                        Een epic deployment waar iedereen al op wacht
+                    </div>
+                </div>
+
+                <div class="lyrics-signature">Liefs Alice ♡</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function playMusic() {
+            const video = document.getElementById('music-video');
+
+            // Try to play video first
+            if (video) {
+                video.play().catch(function() {
+                    // If video fails, try MP3
+                    playMP3();
+                });
+            } else {
+                playMP3();
+            }
+        }
+
+        function playMP3() {
+            const audio = new Audio('music.mp3');
+            audio.play().catch(function(error) {
+                console.log('Could not play audio:', error);
+            });
+        }
+    </script>
 </body>
 </html>
