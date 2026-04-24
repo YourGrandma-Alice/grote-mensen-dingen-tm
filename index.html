@@ -168,13 +168,8 @@
             transform: translateX(-50%) scale(0.98);
         }
 
-        /* Download Button on Greeting */
+        /* Download Button at Bottom */
         .download-button {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
             background: #800000;
             color: white;
             border: none;
@@ -188,16 +183,17 @@
             box-shadow: 0 4px 12px rgba(128, 0, 0, 0.3);
             text-decoration: none;
             display: inline-block;
+            margin-top: 30px;
         }
 
         .download-button:hover {
             background: #600000;
-            transform: translateX(-50%) scale(1.05);
+            transform: scale(1.05);
             box-shadow: 0 6px 16px rgba(128, 0, 0, 0.4);
         }
 
         .download-button:active {
-            transform: translateX(-50%) scale(0.98);
+            transform: scale(0.98);
         }
 
         @media (max-width: 768px) {
@@ -228,9 +224,6 @@
         <button class="listen-button" onclick="playMusic()" title="Luister en zing mee!">
             ♫ Luister en zing mee! ♫
         </button>
-        <a href="music.mp3" download="De_AllerMooiste_Helft.mp3" class="download-button" title="Download MP3">
-            ⬇ Download MP3
-        </a>
         <img src="goodwishes.png" alt="GroteMensenDingenTM">
     </section>
 
@@ -295,6 +288,12 @@
                 </div>
 
                 <div class="lyrics-signature">Liefs Alice ♡</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="music.mp3" download="De_AllerMooiste_Helft.mp3" class="download-button" title="Download MP3">
+                    ⬇ Download MP3
+                </a>
             </div>
         </div>
     </section>
